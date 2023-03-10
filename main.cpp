@@ -9,44 +9,35 @@ const char *usage = "Usage: a.out [type] [num1] [num2] \n"
 		    "	num1 - width or radius \n"
 		    "	num2 - length \n";
 
-int main(int argc, char *argv[]) 
-{
-	double num1 = 0, num2 = 0;
+int main() 
 
-	if (argc < 3) {
-	    cout << usage << endl;
-	    return -1;
-	} else {
-		num1 = atof(argv[2]);
-		if (argc == 4)
-			num2 = atof(argv[3]);
-	}
+{  string con;
 
-	Shape *shape;
-	Rectangle rect;
-	/**** Uncomment the code after you create class Circle and Triangle in shapes.h
-	Circle circle;
-	Triangle triangle;
-	****/
-
-    if (strcmp(argv[1], "rectangle") == 0)
-		shape = &rect;
-	/**** Uncomment the code after you create class Circle and Triangle in shapes.h
-	else if (strcmp(argv[1], "triangle") == 0)
-		shape = &triangle;
-	else if (strcmp(argv[1], "circle") == 0)
-		shape = &circle;
-	*****/
-	else {
-		cout << "Error! Unknown shape type" << endl;
-		return -2;
-	}
-
-	shape->setWidth(num1);
-	shape->setHeight(num2);
-	
-	// Print the area of the object.
-	cout << shape->area() << endl;
+   string type;
+   double w=0,h=0,R=0;
+   Shape *s;
+   Rectangle r;
+   Triangle t;
+   circle c;
+   cout<<"tpye your shape"<<endl;
+   cin >>type;
+   cout<<"type widge and hight or radius"<<endl;
+   if(type=="rectangle"){
+   	cin>>w>>h;
+   	s=&r;
+   }
+   else if (type=="triangle"){
+   	cin>>w>>h;
+   	s=&t;
+   }
+   else if (type=="circle"){
+   	cin>>R;
+   	s=&c;
+   }
+   s->setHeight(h);
+   s->setWidth(w);
+   s->setradius(R);
+   cout<<"area="<<s->area()<<endl;
 
 	return 0;
 }
